@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharshini B - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 70px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            color: #4f46e5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: #4f46e5;
+            color: white;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1f2937;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-items {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            color: #4f46e5;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .project-desc {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .in-progress {
+            position: relative;
+        }
+
+        .in-progress::after {
+            content: 'In Progress';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Education Timeline */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            margin-left: 1rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #4f46e5;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .education-title {
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Skill Progress Bars */
+        .skill-bar {
+            background: #e5e7eb;
+            border-radius: 10px;
+            height: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+
+        /* Project Status Badge */
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        .status-progress {
+            background: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-card header fade-in">
+            <div class="profile-image">DB</div>
+            <h1 class="name">Dharshini B</h1>
+            <p class="subtitle">B.Tech CSE | VIT Chennai | CGPA: 8.34</p>
+            <div class="social-links">
+                <a href="mailto:dharshini.b2023@vitstudent.ac.in" class="social-link" title="Email">
+                    <i data-lucide="mail"></i>
+                </a>
+                <a href="https://github.com/" target="_blank" class="social-link" title="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://linkedin.com/" target="_blank" class="social-link" title="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section class="glass-card section fade-in">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+                Motivated Computer Science undergraduate with strong programming and problem-solving skills. 
+                Skilled in web, mobile, machine learning, and cloud technologies, with hands-on project experience. 
+                Eager to contribute to software development and apply technology to solve real-world challenges.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="glass-card section fade-in">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-title">Programming Languages</div>
+                    <div class="skill-items">C, C++, Python, Java</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Web Development</div>
+                    <div class="skill-items">HTML, CSS, JavaScript, Node.js, React</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Databases</div>
+                    <div class="skill-items">MySQL, MongoDB</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Cloud & Tools</div>
+                    <div class="skill-items">AWS, Git, GitHub</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="glass-card section fade-in">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Expense Tracker Mobile App</h3>
+                    <div class="project-tech">Flutter, Firebase</div>
+                    <p class="project-desc">
+                        Developed an app to track daily expenses with category-wise analysis, 
+                        including authentication and real-time database integration.
+                    </p>
+                    <div class="status-badge status-completed">Completed</div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Real-Time Chat Application</h3>
+                    <div class="project-tech">Node.js, Socket.IO, Express.js</div>
+                    <p class="project-desc">
+                        Built a real-time chat app with multiple rooms, instant messaging, 
+                        and user authentication for seamless communication.
+                    </p>
+                    <div class="status-badge status-completed">Completed</div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Product Classification System</h3>
+                    <div class="project-tech">Python, Machine Learning</div>
+                    <p class="project-desc">
+                        Designed a machine learning model for classifying products into categories 
+                        with 92% accuracy using advanced algorithms.
+                    </p>
+                    <div class="status-badge status-completed">Completed</div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Blockchain Student Records</h3>
+                    <div class="project-tech">Hyperledger Fabric</div>
+                    <p class="project-desc">
+                        Building a decentralized application to securely store and verify 
+                        student records using smart contracts and blockchain technology.
+                    </p>
+                    <div class="status-badge status-progress">In Progress</div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">AWS Task Management System</h3>
+                    <div class="project-tech">AWS Lambda, DynamoDB, API Gateway</div>
+                    <p class="project-desc">
+                        Developing a serverless task management platform with scalable 
+                        cloud-native architecture and modern AWS services.
+                    </p>
+                    <div class="status-badge status-progress">In Progress</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="glass-card section fade-in">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-title">B.Tech, Computer Science Engineering</div>
+                    <div class="education-details">
+                        VIT University, Chennai (2023 – 2027)<br>
+                        <strong>CGPA: 8.34</strong>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-title">Higher Secondary Education</div>
+                    <div class="education-details">
+                        Government Girls Higher Secondary School, Chennai (2023)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Footer -->
+        <footer class="glass-card footer fade-in">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i data-lucide="mail"></i>
+                    <span>dharshini.b2023@vitstudent.ac.in</span>
+                </div>
+                <div class="contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>Chennai, India</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">
+                Let's connect and build something amazing together!
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Animate skill progress bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach((bar, index) => {
+                        setTimeout(() => {
+                            bar.style.width = bar.style.width || '0%';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe skills section
+        const skillsSection = document.querySelector('.skills-grid').closest('.section');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Add smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add hover effects to project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.1);
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add typing effect to name
+        const nameElement = document.querySelector('.name');
+        const originalText = nameElement.textContent;
+        nameElement.textContent = '';
+        
+        setTimeout(() => {
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            typeWriter();
+        }, 500);
+    </script>
+</body>
+</html>
